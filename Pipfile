@@ -9,6 +9,10 @@ langchain-community = "*"
 langchain-openai = "*"
 langchainhub = "*"
 black = "*"
+python-dotenv = "*"
+langchain-ollama = "*"
+ipykernel = "*"
+jupyter = "*"
 
 [dev-packages]
 
