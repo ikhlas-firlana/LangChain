@@ -1,6 +1,6 @@
-import os
-
 import requests
+
+from conf import PROXYCURL_TOKEN
 
 
 def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
@@ -17,7 +17,7 @@ def scrape_linkedin_profile(linkedin_profile_url: str, mock: bool = False):
         response = requests.get(mock_url, timeout=10)
         return response.json()
     else:
-        api_key = os.getenv('PROXYCURL_API')
+        api_key = PROXYCURL_TOKEN
         headers = {'Authorization': 'Bearer ' + api_key}
         api_endpoint = 'https://nubela.co/proxycurl/api/v2/linkedin'
         response = requests.get(
