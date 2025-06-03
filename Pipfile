@@ -13,6 +13,7 @@ python-dotenv = "*"
 langchain-ollama = "*"
 ipykernel = "*"
 jupyter = "*"
+requests = "*"
 
 [dev-packages]
 
