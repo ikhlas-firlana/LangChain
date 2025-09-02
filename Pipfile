@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+langchain="*"
 langchain-community = "*"
 langchain-openai = "*"
 langchainhub = "*"
@@ -13,9 +14,10 @@ langchain-ollama = "*"
 ipykernel = "*"
 jupyter = "*"
 requests = "*"
-langchain = "*"
+duckduckgo-search = "*"
+ddgs = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10"
+python_version = "3.11"
