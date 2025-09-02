@@ -1,6 +1,7 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import Tool
 from langchain_ollama import OllamaLLM
+import conf
 from conf import OLLAMA_HOST, OLLAMA_MODEL
 from langchain.agents import (
     create_react_agent,
@@ -8,7 +9,10 @@ from langchain.agents import (
 )
 from langchain import hub
 
-from tools.tools import get_profile_url_tavily
+from tools.tools import (
+    get_profile_url_tavily,
+    get_profile_url_linkedin_from_google
+)
 
 
 def lookup(name: str):
@@ -34,12 +38,19 @@ def lookup(name: str):
     )
 
     tools_for_agent = [
+        # Tool(
+        #     name="GetLinkedInProfileURL",
+        #     func=get_profile_url_tavily,
+        #     description="Use this to find the LinkedIn profile URL for a specific person. The input to this tool "
+        #                 "should be only the person's full name.",
+        # ),
+
         Tool(
             name="GetLinkedInProfileURL",
-            func=get_profile_url_tavily,
+            func=get_profile_url_linkedin_from_google,
             description="Use this to find the LinkedIn profile URL for a specific person. The input to this tool "
                         "should be only the person's full name.",
-        )
+        ),
     ]
 
     # This is the standard ReAct prompt. It expects the LLM to eventually output:
@@ -49,7 +60,7 @@ def lookup(name: str):
     agent = create_react_agent(
         llm=llm,
         tools=tools_for_agent,
-        prompt=react_prompt
+        prompt=react_prompt,
     )
 
     # 3. Add handle_parsing_errors to AgentExecutor for more graceful error handling or debugging.
@@ -75,5 +86,7 @@ def lookup(name: str):
     return linkedin_profile_url
 
 
-# if __name__ == "__main__":
-#     print(lookup(name="Ikhlas Firlana"))
+if __name__ == "__main__":
+    print(lookup(name="Ikhlas Firlana"))
+
+
