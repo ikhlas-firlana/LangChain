@@ -3,10 +3,12 @@ from langchain_core.prompts import PromptTemplate
 from langchain_ollama import OllamaLLM
 
 import os
+
 load_dotenv()
 
 OLLAMA_HOST = os.environ.get('OLLAMA_HOST')
 OLLAMA_MODEL = os.environ.get('OLLAMA_MODEL')
+
 
 def main():
     print("Hello from langchain-course")
@@ -42,6 +44,7 @@ In 1997, Jobs returned to Apple as CEO after the company's acquisition of NeXT. 
     response = chain.invoke(input={"information": information})
 
     print(response)
+
 
 if __name__ == "__main__":
     main()
