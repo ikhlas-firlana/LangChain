@@ -16,6 +16,7 @@ jupyter = "*"
 requests = "*"
 duckduckgo-search = "*"
 ddgs = "*"
+pydantic = "*"
 
 [dev-packages]
 
