@@ -23,7 +23,12 @@ agent = create_react_agent(
     prompt=react_prompt,
 )
 
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+agent_executor = AgentExecutor(
+    agent=agent,
+    tools=tools,
+    verbose=True,
+    handle_parsing_errors=True,
+)
 
 chain = agent_executor
 
